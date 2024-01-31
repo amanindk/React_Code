@@ -1,0 +1,29 @@
+/* src/App.css */
+
+.App {
+  text-align: center;
+}
+
+/* .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+} */
+
+/* Style for the heart icon */
+.unliked {
+  color: grey; /* Default color for unliked state */
+  cursor: pointer;
+  transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.liked {
+  color: red; /* Color for liked state */
+  cursor: pointer;
+  transition: color 0.3s; /* Smooth transition for color change */
+}
