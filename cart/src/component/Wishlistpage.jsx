@@ -1,4 +1,3 @@
-import React from "react";
 
 function wishlistpage() {
   const wishlistItems = ["Item 1", "Item 2", "Item 3"];
