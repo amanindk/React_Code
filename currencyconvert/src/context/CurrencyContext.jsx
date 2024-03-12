@@ -4,7 +4,7 @@ export const CurrencyContext = createContext();
 function CurrencyProvider({ children }) {
   const [fromCurrency, setFromCurrency] = useState("USD - United States");
   const [toCurrency, setToCurrency] = useState("AUD - Australia");
-  const [firstAmount, setFirstAmount] = useState(0);
+  const [firstAmount, setFirstAmount] = useState("");
   const value = {
     fromCurrency,
     setFromCurrency,

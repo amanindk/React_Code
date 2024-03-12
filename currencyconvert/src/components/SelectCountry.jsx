@@ -24,12 +24,13 @@ function selectcountry(props) {
     }`;
   });
   console.log(dataCountries);
-  // console.log(dataFilter);
+  console.log(dataFilter);
   // console.log(data);
   return (
     <Grid item xs={12} md={3}>
       <Autocomplete
         value={value}
+        disableClearable
         onChange={(event, newValue) => {
           setValue(newValue);
         }}

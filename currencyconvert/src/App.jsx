@@ -15,15 +15,18 @@ function App() {
     toCurrency,
     firstAmount,
   } = useContext(CurrencyContext);
+  console.log(firstAmount);
+
   const [resultCurrency, setResultCurrency] = useState(0);
-  const codeFromCurrency = fromCurrency.split("")[1];
-  const codeToCurrency = toCurrency.split("")[1];
+  const codeFromCurrency = fromCurrency.split(" ")[1];
+  const codeToCurrency = toCurrency.split(" ")[1];
   console.log(resultCurrency);
+
   useEffect(() => {
     if (firstAmount) {
-      axios("https://api.freecurrencyapi.com/v1/latest", {
+      axios("https://api.freecurrencyapi.com/v1/", {
         params: {
-          apikey: import.meta.env.API_KEY,
+          apikey: "fca_live_ZPZ5Z8XpUz9LvYPsEuIMpa5oH9h24ACfzqUeUSLz",
           base_currency: codeFromCurrency,
           currencies: codeToCurrency,
         },
@@ -63,7 +66,7 @@ function App() {
       {firstAmount ? (
         <Box sx={{ textAlign: "left", marginTop: "1rem" }}>
           <Typography>
-            {firstAmount} {fromCurrency} ={" "}
+            {firstAmount} {fromCurrency} =
           </Typography>
           <Typography
             variant="h5"

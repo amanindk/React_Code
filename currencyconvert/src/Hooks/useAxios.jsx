@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import axios from "axios"
+import axios from "axios";
 function useAxios(url) {
   const [data, setData] = useState([]);
   const [error, setError] = useState([null]);
-  const [loaded, setLoaded] = useState([false]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoaded(true);
-        const response = await axios(url);  
+        const response = await axios(url);
         setData(response.data);
       } catch (error) {
         setError(error);
@@ -17,7 +17,7 @@ function useAxios(url) {
         setLoaded(false);
       }
     };
-    fetchData()
+    fetchData();
   }, [url]);
   return [data, error, loaded];
 }

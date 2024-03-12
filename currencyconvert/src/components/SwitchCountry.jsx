@@ -7,7 +7,7 @@ function switchCountry() {
   const { fromCurrency, setFromCurrency, setToCurrency, toCurrency } =
     useContext(CurrencyContext);
   const handleSwitch = () => {
-    setFromCurrency(toCurrency), setToCurrency(fromCurrency);
+     setFromCurrency(toCurrency), setToCurrency(fromCurrency);
   };
 
   return (

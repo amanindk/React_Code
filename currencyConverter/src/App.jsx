@@ -1,5 +1,6 @@
 import { useState } from "react";
-import InputBox from "./component/InputBox";
+// import InputBox from "./component/InputBox";
+import InputBox  from "./component/InputBox";
 import useCurrencyInfo from "./hooks/useCurrencyInfo";
 import "./App.css";
 import sunflower from "./sunflower.jpg";
@@ -14,8 +15,8 @@ function App() {
   const option = Object.keys(currencyInfo);
 
   const swap = () => {
-    setTo(from);
     setFrom(to);
+    setTo(from);
     setConvertedAmount(amount);
     setAmount(convertedAmount);
   };
@@ -36,7 +37,8 @@ function App() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-            }}
+              convert()
+            }}  
           >
             <div className="w-full mb-1">
               <InputBox
