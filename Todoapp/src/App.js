@@ -15,6 +15,7 @@ function App() {
     newListTodo.splice(key, 1);
     setListTodo([...newListTodo]);
   };
+  
   return (
     <div className="main-container">
       <div className="center-container">
