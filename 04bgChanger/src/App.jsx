@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-
 function App() {
   const [color, SetColor] = useState("olive");
   return (
