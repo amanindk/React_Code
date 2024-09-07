@@ -1,14 +1,16 @@
-import { Router, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./component/Header";
-import wishlistpage from "./component/Wishlistpage.jsx";
+import Wishlistpage from "./component/Wishlistpage.jsx";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Route path="/wishlist" element={wishlistpage} />
-    </Router>
+    <>
+      <Routes>
+        <Route path="/" element={<Header />} />
+        <Route path="/wishlist" element={<Wishlistpage />} />
+      </Routes>
+    </>
   );
 }
 

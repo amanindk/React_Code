@@ -11,11 +11,36 @@ function Backgroundchange() {
 
   return (
     <div className="bgchange">
-      <button onClick={() => click("blue")}>Blue</button>
-      <button onClick={() => click("red")}>Red</button>
-      <button onClick={() => click("Yellow")}>Yellow</button>
-      <button onClick={() => click("pink")}>Pink</button>
-      <button onClick={() => click("green")}>Green</button>
+      <button
+        className="p-2 bg-blue-500 border-2 border-rounded-1"
+        onClick={() => click("blue")}
+      >
+        Blue
+      </button>
+      <button
+        className="p-2 bg-red-500 border-2 border-rounded-1"
+        onClick={() => click("red")}
+      >
+        Red
+      </button>
+      <button
+        className="p-2 bg-yellow-500 border-2 border-rounded-1"
+        onClick={() => click("Yellow")}
+      >
+        Yellow
+      </button>
+      <button
+        className="p-2 bg-pink-500 border-2 border-rounded-1"
+        onClick={() => click("pink")}
+      >
+        Pink
+      </button>
+      <button
+        className="p-2 bg-green-500 border-2 border-rounded-1"
+        onClick={() => click("green")}
+      >
+        Green
+      </button>
     </div>
   );
 }

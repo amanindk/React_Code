@@ -1,5 +1,4 @@
-
-function wishlistpage() {
+function Wishlistpage() {
   const wishlistItems = ["Item 1", "Item 2", "Item 3"];
   return (
     <div>
@@ -17,4 +16,4 @@ function wishlistpage() {
   );
 }
 
-export default wishlistpage;
+export default Wishlistpage;
