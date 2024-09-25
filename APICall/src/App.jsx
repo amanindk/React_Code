@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function App() {
+  //Get Fetech API
   const [data, setData] = useState([]);
   const url = "https://jsonplaceholder.typicode.com/comments";
   useEffect(() => {
@@ -15,7 +16,7 @@ function App() {
       });
   }, []);
 
-  //POST Fetch API
+  //Post Fetch API
   const postEvent = () => {
     const data = {
       name: "AMAN",
@@ -26,37 +27,37 @@ function App() {
     const url = "https://jsonplaceholder.typicode.com/comments";
     fetch(url, {
       method: "POST",
-      body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
+      body: JSON.stringify(data),
     })
       .then((response) => {
         console.log("response", response);
         if (response == 200) {
-          alert("Successfully");
+          alert("Successfull");
         }
       })
       .catch((e) => {
         console.log("e", e);
       });
   };
-
-  // PUT Fetch API
+  //Post PUT API
   const postputEvent = () => {
     const data = {
-      id: "qwrt1234",
+      id: "qwerty1234",
       name: "AMAN",
       position: "Web Developer",
       company: "Google",
       salary: "2cr",
     };
+
     const url = data.id
       ? "https://jsonplaceholder.typicode.com/comments" + data.id
       : "https://jsonplaceholder.typicode.com/comments";
     fetch(url, {
-      method: data.id ? "POST" : "PUT",
+      method: data.id ? "PUT" : "POST",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -64,9 +65,9 @@ function App() {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        console.log("respose", response);
+        console.log("response", response);
         if (response == 200) {
-          alert("Succeessful");
+          alert("Successfull");
         }
       })
       .catch((e) => {
@@ -76,12 +77,10 @@ function App() {
 
   return (
     <div>
-      <h2>This is my Fetch API</h2>
-      <div>
-        {data.map((items) => {
-          return <div>{items.name}</div>;
-        })}
-      </div>
+      <h2>this is my Get Fetch Api</h2>
+      {data.map((items) => {
+        return <div>{items.name}</div>;
+      })}
       <button onClick={postEvent}></button>
       <button onClick={postputEvent}></button>
     </div>
