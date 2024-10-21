@@ -1,45 +1,23 @@
-import React, { useEffect, useState } from "react";
-import Employeedata from "./Employeedata.jsx";
-
+import { useEffect, useState } from "react";
+import Employeedata from "./Employeedata";
 function App() {
   const [data, setData] = useState([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(0);
   const [id, setId] = useState(0);
-  const [isUpdate, setIsUpdate] = useState(false);
+  const [update, setUpdate] = useState(false);
 
-  const hanldeEdit = (id) => {
-    const dt = data.filter((item) => item.id === id);
-    if (dt !== undefined) {
-      setIsUpdate(true);
-      setId(id);
-      setFirstName(dt[0].firstName);
-      setLastName(dt[0].lastName);
-      setAge(dt[0].age);
-    }
-  };
-
-  const hanldeDelete = (id) => {
-    if (id > 0) {
-      if (window.confirm("Are you sure deleted thid item")) {
-        const dt = data.filter((item) => item.id !== id);
-        setData(dt);
-      }
-    }
-  };
-
-  const hanldeSave = (e) => {
+  const handleSave = (e) => {
     let error = "";
     if (firstName === "") {
-      error += "Firstname is Requird";
+      error += "FirstName is Required ";
     }
     if (lastName === "") {
-      error += "Lastname is required";
+      error += "LastName is Required ";
     }
-
     if (age <= 0) {
-      error += "Age is required";
+      error += "Age is Required";
     }
 
     if (error === "") {
@@ -53,12 +31,10 @@ function App() {
       };
       dt.push(newObject);
       setData(dt);
-    } else {
-      alert(error);
-    }
+    } else alert(error);
   };
 
-  const hanldeUpdate = () => {
+  const handleUpdate = () => {
     const index = data
       .map((item) => {
         return item.id;
@@ -68,80 +44,90 @@ function App() {
     dt[index].firstName = firstName;
     dt[index].lastName = lastName;
     dt[index].age = age;
-
     setData(dt);
-    hanldeClear();
   };
 
-  const hanldeClear = () => {
-    setIsUpdate(false);
-    setId(0);
+  const handleClear = () => {
+    setAge(0);
     setFirstName("");
     setLastName("");
-    setAge("");
+    setUpdate(false);
+  };
+
+  const handleEdit = (id) => {
+    const dt = data.filter((item) => item.id === id);
+    if (dt !== undefined) {
+      setId(dt[0].id);
+      setFirstName(dt[0].firstName);
+      setLastName(dt[0].lastName);
+      setAge(dt[0].age);
+    }
+    setUpdate(true);
+  };
+
+  const handleDelete = (id) => {
+    if (id > 0) {
+      window.confirm("Are you sure");
+      const dt = data.filter((item) => item.id !== id);
+      setData(dt);
+    }
   };
 
   useEffect(() => {
     setData(Employeedata);
   }, []);
-
   return (
-    <div className="app">
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          <label>
-            First Name:
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              placeholder="Enter First Name"
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Last Name:
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              placeholder="Enter Last Name"
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Age:
-            <input
-              type="text"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              placeholder="Enter First Name"
-            />
-          </label>
-        </div>
-        {!isUpdate ? (
-          <button className="btn btn-primary" onClick={(e) => hanldeSave(e)}>
+    <div>
+      <div
+        style={{ display: "flex", justifyContent: "center", margin: "20px" }}
+      >
+        <label htmlFor="">
+          FirstName:{" "}
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter the FirstName"
+          />
+        </label>
+        <label htmlFor="">
+          LastName:{" "}
+          <input
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            type="text"
+            placeholder="Enter the LastName"
+          />
+        </label>
+        <label htmlFor="">
+          Age:{" "}
+          <input
+            type="text"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            placeholder="Enter the Age"
+          />
+        </label>
+        {!update ? (
+          <button className="btn btn-primary" onClick={(e) => handleSave(e)}>
             Save
           </button>
         ) : (
-          <button className="btn btn-primary" onClick={() => hanldeUpdate()}>
+          <button onClick={() => handleUpdate()} className="btn btn-primary">
             Update
           </button>
         )}
-
-        <button className="btn btn-danger" onClick={() => hanldeClear()}>
+        <button onClick={() => handleClear()} className="btn btn-danger">
           Clear
         </button>
       </div>
       <table className="table table-hover">
         <thead>
           <tr>
-            <td>Sr no. </td>
-            <td>ID </td>
+            <td>Sr. no.</td>
+            <td>ID</td>
             <td>FirstName</td>
-            <td>LstName</td>
+            <td>LastName</td>
             <td>Age</td>
             <td>Action</td>
           </tr>
@@ -155,20 +141,18 @@ function App() {
                 <td>{item.firstName}</td>
                 <td>{item.lastName}</td>
                 <td>{item.age}</td>
-                <td>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => hanldeEdit(item.id)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => hanldeDelete(item.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleEdit(item.id)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  Delete
+                </button>
               </tr>
             );
           })}

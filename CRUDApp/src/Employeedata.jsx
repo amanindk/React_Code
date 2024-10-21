@@ -2,27 +2,26 @@ const data = [
   {
     id: 1,
     firstName: "Aman",
-    lastName: "Singh",
+    lastName: "Deep",
     age: 23,
   },
   {
     id: 2,
-    firstName: "Jazzy",
+    firstName: "Jaazzy",
     lastName: "Rani",
-    age: 22,
+    age: 21,
   },
   {
     id: 3,
     firstName: "Ram",
-    lastName: "Kumar",
-    age: 32,
+    lastName: "ji",
+    age: 33,
   },
   {
     id: 4,
-    firstName: "shiv",
-    lastName: "sena",
-    age: 22,
+    firstName: "Lzza",
+    lastName: "thak",
+    age: 23,
   },
 ];
-
 export default data;
