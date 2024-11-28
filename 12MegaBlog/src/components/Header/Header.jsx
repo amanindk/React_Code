@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
-  const authStatus = useSelector((state) => state.auth.status);
+  const authStatus = useSelector((state) => state.auth?.status);
 
   const navItems = [
     {
@@ -16,7 +16,7 @@ function Header() {
     },
     {
       name: "Login",
-      slug: "/login",
+      slug: "login",
       active: !authStatus,
     },
     {
@@ -27,12 +27,12 @@ function Header() {
     {
       name: "All Posts",
       slug: "/all-posts",
-      active: !authStatus,
+      active: authStatus,
     },
     {
       name: "Add Posts",
       slug: "/add-posts",
-      active: !authStatus,
+      active: authStatus,
     },
   ];
   return (
@@ -45,7 +45,7 @@ function Header() {
             </Link>
           </div>
           <ul className="flex ml-auto">
-            {navItems.map((item) => {
+            {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>
                   <button
@@ -55,8 +55,8 @@ function Header() {
                     {item.name}
                   </button>
                 </li>
-              ) : null;
-            })}
+              ) : null
+            )}
             {authStatus && (
               <li>
                 <LogoutBtn />
@@ -68,5 +68,4 @@ function Header() {
     </header>
   );
 }
-
 export default Header;

@@ -1,4 +1,4 @@
-?import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -60,19 +60,23 @@ function Login() {
               {...register("email", {
                 required: true,
                 validate: {
-                  matchPatern: (value) => /'w'=+-_123*!@$%^&*();,.><?[]'";:,>,<~\\||/.test(value) || "Email address must to be a void addess"
+                  matchPatern: (value) =>
+                    /'w'=+-_123*!@$%^&*();,.><?[]'";:,>,<~\\||/.test(value) ||
+                    "Email address must to be a void addess",
                 },
               })}
             />
             <Input
-            label='Password:'
-            placeholder='Enter your password'
-            type='password'
-            {...register('password',{
-                required:true
-            })}
+              label="Password:"
+              placeholder="Enter your password"
+              type="password"
+              {...register("password", {
+                required: true,
+              })}
             />
-            <Button type='submit' className='w-full' >Sign In</Button>
+            <Button type="submit" className="w-full">
+              Sign In
+            </Button>
           </div>
         </form>
       </div>

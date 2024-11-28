@@ -64,7 +64,6 @@ function Signup() {
               label="Email:"
               type="email"
               placeholder="Enter your email"
-              type="email"
               {...register("email", {
                 required: true,
                 validate: {
