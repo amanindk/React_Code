@@ -16,6 +16,13 @@ function Projects() {
       <div className="project">
         <Link to="cartcontext">CartContext</Link>
       </div>
+      <div className="project">
+        <Link to="fetchapi">Fetch API</Link>
+      </div>
+
+      <div className="project">
+        <Link to="callingfetchapi">Calling Fetch API Data</Link>
+      </div>
     </div>
   );
 }
